@@ -1,0 +1,21 @@
+firewall-cmd --permanent --add-port=80/tcp
+firewall-cmd --permanent --add-port=53/udp
+firewall-cmd --permanent --add-port=53/tcp
+firewall-cmd --reload
+firewall-cmd --list-ports
+
+firewall-cmd --permanent --add-service=ntp
+
+
+firewall-cmd --permanent --add-icmp-block=echo-request
+
+firewall-cmd --permanent --remove-service=ftp
+
+
+
+
+Port 80	    firewall-cmd --list-ports
+Port 53	    firewall-cmd --list-ports
+NTP	        firewall-cmd --list-services
+ICMP block	firewall-cmd --list-icmp-blocks
+FTP blocked	firewall-cmd --list-services

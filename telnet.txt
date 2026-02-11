@@ -1,0 +1,16 @@
+yum install -y telnet-server
+
+select VMnet8 in wireshark 
+
+systemctl enable telnet.socket
+
+
+systemctl start telnet.socket
+
+
+systemctl stop firewalld
+
+
+systemctl disable firewalld
+
+setenforce Permissive
