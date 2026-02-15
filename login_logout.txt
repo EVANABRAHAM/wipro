@@ -1,0 +1,21 @@
+// failed login and logout attempts
+Get-WinEvent -FilterHashtable @{LogName='Security'; Id=4624} | ft -AutoSize -Wrap
+
+Get-WinEvent -FilterHashtable @{LogName='Security'; Id=4624} -MaxEvents 1 | `
+Select-Object TimeCreated,Id,MachineName,Message | ft -AutoSize -Wrap
+
+// to view active web connection
+Get-NetTCPConnection
+
+//connection to http or https
+Get-NetTCPConnection | Where-Object {$_.RemotePort -eq 80 -or $_.RemotePort -eq 443 }
+
+// mapping connection to  process
+
+Get-NetTCPConnection | `
+Where-Object { $_.RemotePort -eq 443 } | `
+Select-Object LocalAddress, RemoteAddress, OwningProcess
+
+//resolving process
+Get-Process -Id 264
+
