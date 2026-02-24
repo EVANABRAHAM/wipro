@@ -19,3 +19,29 @@ Select-Object LocalAddress, RemoteAddress, OwningProcess
 //resolving process
 Get-Process -Id 264
 
+Get-WinEvent -FilterHashtable @{
+    LogName='Security'
+    Id=4625
+} -MaxEvents 2
+
+Get-WinEvent -FilterHashtable @{
+    LogName='Security'
+    Id=4624
+} -MaxEvents 2 
+
+Get-WinEvent -LogName "Microsoft-Windows-PowerShell/Operational" |
+Where-Object { $_.Message -match "EncodedCommand" } |
+Select-Object TimeCreated, Id, Message |
+Format-List
+
+Get-WinEvent -LogName * |
+Where-Object { $_.Message -match "Administrator" } |
+Select-Object TimeCreated, LogName, Id, Message |
+Format-List
+
+Get-WinEvent -LogName "Microsoft-Windows-Windows Defender/Operational" |
+Select-Object TimeCreated, Id, LevelDisplayName, Message |
+Format-List
+
+
+
