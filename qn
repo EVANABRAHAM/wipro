@@ -1,0 +1,5 @@
+Use powershell cmdlet to list open ports in DC machine and ensure to only display IPV4 based ports.
+
+Get-NetTCPConnection -State Listen -AddressFamily IPv4 |
+Select-Object LocalAddress, LocalPort, OwningProcess |
+Sort-Object LocalPort
