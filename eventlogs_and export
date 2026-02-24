@@ -1,0 +1,2 @@
+# Fetch top 10 System event logs (latest) and save to a text file
+Get-WinEvent -LogName System -MaxEvents 10 | Format-Table TimeCreated, Id, LevelDisplayName, Message -AutoSize | Out-File "C:\DC_SystemLogs.txt"
