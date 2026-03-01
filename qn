@@ -16,3 +16,8 @@ Sort-Object LocalPort
 
 
 Write-Host "Welcome to Capstone Project"
+
+
+Get-WinEvent -LogName 'Microsoft-Windows-PowerShell/Operational' |
+Where-Object { $_.Message -match "EncodedCommand" } |
+ft -AutoSize -Wrap
