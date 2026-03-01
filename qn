@@ -13,3 +13,6 @@ Get-NetTCPConnection |
 Where-Object { $_.State -eq 'Listen' -and $_.LocalAddress -notlike "*:*" } |
 Select-Object LocalAddress, LocalPort, OwningProcess |
 Sort-Object LocalPort
+
+
+Write-Host "Welcome to Capstone Project"
